@@ -14,7 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-//@Table(name = "hotels")
+@Table(name = "hotels")
 public class Hotel {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
