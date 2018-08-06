@@ -16,13 +16,16 @@ import javax.persistence.TemporalType;
 @Table(name = "reservations")
 public class Reservation {
 	
-	@Id
+	/*@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="reserve_seq")
 	@SequenceGenerator(
 		name="reserve_seq",
 		sequenceName="reserve_id_s",
 		allocationSize=20
-	)
+	)*/
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	@JoinColumn(name = "user_id")
 	private int userId;

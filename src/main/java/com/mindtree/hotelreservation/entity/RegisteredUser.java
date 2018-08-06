@@ -16,13 +16,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "registered_users")
 public class RegisteredUser {
-	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="user_seq")
+	
+	/*@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="user_seq")
 	@SequenceGenerator(
 		name="user_seq",
 		sequenceName="user_id_s",
 		allocationSize=20
-	)
+	)*/
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	@Column(name = "user_name")
 	private String userName;
