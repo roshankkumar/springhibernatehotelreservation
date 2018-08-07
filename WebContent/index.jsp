@@ -127,11 +127,15 @@ text-align:center;
 	<center>
 		<form>
 			<h1>Welcome To Hotel
-				Booking Application</h1>
+				Booking sample Application</h1>
 			<br> <br> <br> <br> <br> <br>
 			<table>
 				<tr>
 					<td colspan="1"><a href="searchHotels"><h2 align="center" style="color: black">Search Hotels</h2></a></td>
+					<%-- <td><h3 style="color: #48D1CC;">${msg}</h3></td> --%>
+				</tr>
+				<tr>
+					<td colspan="1"><a href="getRegistrationPage"><h2 align="center" style="color: black">Register User</h2></a></td>
 					<%-- <td><h3 style="color: #48D1CC;">${msg}</h3></td> --%>
 				</tr>
 			</table>
