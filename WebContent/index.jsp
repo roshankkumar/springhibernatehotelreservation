@@ -138,6 +138,10 @@ text-align:center;
 					<td colspan="1"><a href="getRegistrationPage"><h2 align="center" style="color: black">Register User</h2></a></td>
 					<%-- <td><h3 style="color: #48D1CC;">${msg}</h3></td> --%>
 				</tr>
+				<tr>
+					<td colspan="1"><a href="loginPage"><h2 align="center" style="color: black">Login User</h2></a></td>
+					<%-- <td><h3 style="color: #48D1CC;">${msg}</h3></td> --%>
+				</tr>
 			</table>
 		</form>
 	</center>

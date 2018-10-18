@@ -26,9 +26,10 @@ import com.mindtree.hotelreservation.util.StringToDateConversion;
 
 @Controller
 public class HotelReservationController {
+	
 	@Autowired
-	HotelReservationService hotelReservationService;// = new
-													// HotelReservationServiceImpl();
+	HotelReservationService hotelReservationService;
+	
 	@PostConstruct
 	public void display() {
 		System.out.println("hotelReservationService created");
@@ -45,6 +46,11 @@ public class HotelReservationController {
 	@RequestMapping("/searchHotels")
 	public String searchHotels() {
 		return "SearchHotels";
+	}
+	
+	@RequestMapping("/loginPage")
+	public String loginPage() {
+		return "userLogin";
 	}
 
 	@RequestMapping("/getRegistrationPage")
@@ -144,6 +150,7 @@ public class HotelReservationController {
 		Boolean isErrors = false;
 		int userNameLength = userDto.getUserName().length();
 		int passwordLength = userDto.getPassword().length();
+		System.out.println("book hotel: 1");
 		if (userNameLength < 1 || userNameLength > 20 || passwordLength < 1 || passwordLength > 20)
 			isErrors = true;
 		if (result.hasErrors() || isErrors) {
@@ -152,7 +159,7 @@ public class HotelReservationController {
 			modelView.addObject("errorMessage", "Invalid user name or password! enter again");
 			return modelView;
 		}
-
+		System.out.println("book hotel: 2");
 		String userName = userDto.getUserName();
 		String password = userDto.getPassword();
 		if (!hotelReservationService.isValidUser(userName)) {
@@ -161,10 +168,13 @@ public class HotelReservationController {
 			modelView.addObject("errorMessage", "User name doesn't exist! enter again");
 			return modelView;
 		}
+		System.out.println("book hotel: 3");
 		Hotel hotel = null;
 		RegisteredUser user = null;
 		try {
+			System.out.println("book hotel: 3-1");
 			hotel = hotelReservationService.getHotelById((int) session.getAttribute("hotelId"));
+			System.out.println("book hotel: 3-2");
 			user = hotelReservationService.getUserByName(userName);
 		} catch (HibernateException hEx) {
 			modelView = new ModelAndView("userLogin");
@@ -172,6 +182,7 @@ public class HotelReservationController {
 					"U have done something wrong (Database disconnected) you Please make sure Database is connected");
 			return modelView;
 		}
+		System.out.println("book hotel: 4");
 		Reservation reservation = new Reservation();
 		reservation.setHotelId(hotel.getId());
 		reservation.setUserId(user.getId());
@@ -187,7 +198,7 @@ public class HotelReservationController {
 					"U have done something wrong (Database disconnected) you Please make sure Database is connected");
 			return modelView;
 		}
-		System.out.println(status);
+		System.out.println("status: "+status);
 
 		if (status == false) {
 			modelView = new ModelAndView("userLogin");
