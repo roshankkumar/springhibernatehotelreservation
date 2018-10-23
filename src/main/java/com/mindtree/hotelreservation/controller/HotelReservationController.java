@@ -49,8 +49,8 @@ public class HotelReservationController {
 	}
 	
 	@RequestMapping("/loginPage")
-	public String loginPage() {
-		return "userLogin";
+	public ModelAndView loginPage() {
+		return new ModelAndView( "userLogin", "userDto", new UserDto());
 	}
 
 	@RequestMapping("/getRegistrationPage")
@@ -173,7 +173,9 @@ public class HotelReservationController {
 		RegisteredUser user = null;
 		try {
 			System.out.println("book hotel: 3-1");
-			hotel = hotelReservationService.getHotelById((int) session.getAttribute("hotelId"));
+			try {
+			hotel = hotelReservationService.getHotelById((int) session.getAttribute("hotelId"));}
+			catch( NullPointerException e) {System.out.println("Null Pointer Exception");}
 			System.out.println("book hotel: 3-2");
 			user = hotelReservationService.getUserByName(userName);
 		} catch (HibernateException hEx) {
